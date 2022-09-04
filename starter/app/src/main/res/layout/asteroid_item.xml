@@ -51,12 +51,10 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:contentDescription="it is potentiallyHazardous"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:statusIcon="@{asteroid.potentiallyHazardous}"
-                tools:ignore="HardcodedText"
                 tools:srcCompat="@drawable/ic_status_potentially_hazardous" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

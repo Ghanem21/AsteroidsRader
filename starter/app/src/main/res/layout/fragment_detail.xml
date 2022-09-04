@@ -24,9 +24,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@drawable/asteroid_safe"
-            android:contentDescription="the asteroid Img"
-            tools:ignore="HardcodedText" />
+            tools:srcCompat="@drawable/asteroid_safe" />
 
         <ScrollView
             android:layout_width="0dp"
@@ -97,8 +95,7 @@
                         android:layout_height="wrap_content"
                         android:padding="16dp"
                         app:srcCompat="@drawable/ic_help_circle"
-                        android:contentDescription="info about asteroid"
-                        tools:ignore="HardcodedText" />
+                        android:contentDescription="@string/astronomica_unit_explanation" />
 
                 </LinearLayout>
 
