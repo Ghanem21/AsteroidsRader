@@ -24,7 +24,7 @@ class AsteroidsRepository(private val database: AsteroidDatabase) {
     private val formatter = DateTimeFormatter.ofPattern(Constants.API_QUERY_DATE_FORMAT)
 
     private val today = current.format(formatter)
-    private val lastWeek = current.minusDays(7).format(formatter)
+    private val week = current.plusDays(7).format(formatter)
 
     val asteroids: LiveData<List<Asteroid>> =
         Transformations.map(database.asteroidDao.getAsteroids()) {
@@ -37,13 +37,14 @@ class AsteroidsRepository(private val database: AsteroidDatabase) {
         }
 
     val lastWeekAsteroids: LiveData<List<Asteroid>> =
-        Transformations.map(database.asteroidDao.getWeek(today, lastWeek)) {
+        Transformations.map(database.asteroidDao.getWeek(today,week)) {
             it.asDomainModel()
         }
 
     suspend fun refreshAsteroids() {
         withContext(Dispatchers.IO) {
             try {
+                database.asteroidDao.deleteOldAsteroids(today)
                 val str = AsteroidApi.retrofitService.getAsteroid()
                 val asteroids = parseAsteroidsJsonResult(JSONObject(str))
                 database.asteroidDao.insertAll(*asteroids.asDatabaseModel())

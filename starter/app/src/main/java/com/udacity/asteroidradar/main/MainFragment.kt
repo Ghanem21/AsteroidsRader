@@ -59,9 +59,9 @@ class MainFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         viewModel.updateFilter(
             when (item.itemId) {
-                R.id.show_all_menu -> AsteroidFilters.ALL
+                R.id.show_week_menu -> AsteroidFilters.WEEK
                 R.id.show_today_menu -> AsteroidFilters.TODAY
-                else -> AsteroidFilters.WEEK
+                else -> AsteroidFilters.ALL
             }
         )
         return true
